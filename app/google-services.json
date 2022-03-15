@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "277871993912",
+    "project_id": "fir-app-restart",
+    "storage_bucket": "fir-app-restart.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:277871993912:android:749dbd81be7d4379d9b2cd",
+        "android_client_info": {
+          "package_name": "com.example.demo_app_restart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "277871993912-p81lo4u36nmb4norprsupuc6rerbb5ug.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-i1-SxIlQcGf1tHNqRwiApeirfQMuICM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "277871993912-p81lo4u36nmb4norprsupuc6rerbb5ug.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
