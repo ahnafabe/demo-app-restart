@@ -34,6 +34,7 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        System.out.println("hello ");
 
         //Email input field
         editTextEmail = (EditText) findViewById(R.id.register_email);
@@ -63,9 +64,9 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
 
-        if(user == null){
-            startActivity(new Intent(this, LoginActivity.class));
-        }
+//        if(user == null){
+////            startActivity(new Intent(this, LoginActivity.class));
+////        }
     }
 
     private void registerUser () {
@@ -96,11 +97,11 @@ public class RegistrationActivity extends AppCompatActivity {
             return;
         } else {
 
-            rootNode = FirebaseDatabase.getInstance(); //instance of database root
-            reference = rootNode.getReference("users"); //referencing databse of users
-
-            User userData = new User(EmailAddress, Password); //creating user instance
-            reference.child(mAuth.getUid()).setValue(userData); //pushing data to database and organizing users by ID's
+//            rootNode = FirebaseDatabase.getInstance(); //instance of database root
+//            reference = rootNode.getReference("users"); //referencing databse of users
+//
+//            User userData = new User(EmailAddress, Password); //creating user instance
+//            reference.child(mAuth.getUid()).setValue(userData); //pushing data to database and organizing users by ID's
 
             mAuth.createUserWithEmailAndPassword(EmailAddress, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override

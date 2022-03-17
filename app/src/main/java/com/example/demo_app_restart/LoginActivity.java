@@ -16,7 +16,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,7 +32,19 @@ public class LoginActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.login_email);
         password = (EditText) findViewById(R.id.login_password);
 
+        // Re-direct to register page
 
+//        register.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
+//            }
+//        });
+
+        register = (TextView) findViewById(R.id.needs_new_account);
+        register.setOnClickListener(view -> {
+            startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
+        });
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -41,12 +52,6 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(view -> {
             loginUser();
         });
-
-        register = (TextView) findViewById(R.id.needs_new_account);
-        register.setOnClickListener(view -> {
-            startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
-        });
-
     }
 
     private void loginUser() {
@@ -81,8 +86,4 @@ public class LoginActivity extends AppCompatActivity {
             });
         }
     }
-
-
-
-
 }
