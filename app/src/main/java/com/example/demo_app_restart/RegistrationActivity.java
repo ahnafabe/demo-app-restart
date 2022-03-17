@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private EditText editTextEmail, editTextPassword, editTextUserName;
+    private EditText editTextEmail, editTextPassword, editTextUserName, phoneNo;
     private Button signUpButton;
     private TextView prevMenu;
 
@@ -44,6 +44,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
         //Username input field
         editTextUserName = (EditText) findViewById(R.id.register_name);
+
+        phoneNo = (EditText) findViewById(R.id.phoneNo);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -73,6 +75,7 @@ public class RegistrationActivity extends AppCompatActivity {
         final String EmailAddress = editTextEmail.getText().toString().trim();
         String Password = editTextPassword.getText().toString().trim();
         final String PersonName = editTextUserName.getText().toString().trim();
+        final String cellNum = phoneNo.getText().toString().trim();
 
         //Check for email input
         if (EmailAddress.isEmpty()) {
@@ -87,6 +90,10 @@ public class RegistrationActivity extends AppCompatActivity {
             editTextPassword.setError("Password is required"); //Check for password input
             editTextPassword.requestFocus();
             return;
+        }else if (cellNum.isEmpty()) {
+                phoneNo.setError("Number is required"); //Check for password input
+                phoneNo.requestFocus();
+                return;
         }else if (Password.length() < 6) {
             editTextPassword.setError("Min password length should be 6 characters"); //Check password length
             editTextPassword.requestFocus();
@@ -100,8 +107,8 @@ public class RegistrationActivity extends AppCompatActivity {
             rootNode = FirebaseDatabase.getInstance(); //instance of database root
             reference = rootNode.getReference("users"); //referencing databse of users
 
-            User userData = new User(PersonName,EmailAddress, Password); //creating user instance
-            reference.setValue(userData); //pushing data to database and organizing users by ID's
+            User userData = new User(PersonName,EmailAddress, Password, cellNum); //creating user instance
+            reference.child(cellNum).setValue(userData); //pushing data to database and organizing users by ID's
 
             mAuth.createUserWithEmailAndPassword(EmailAddress, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
